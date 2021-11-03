@@ -49,4 +49,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata:2.2.0"
     implementation "androidx.lifecycle:lifecycle-common-java8:2.2.0"
     implementation "com.android.volley:volley:1.1.1"
+
+    //Image Handler Library
+    implementation 'com.squareup.picasso:picasso:2.8'
 }

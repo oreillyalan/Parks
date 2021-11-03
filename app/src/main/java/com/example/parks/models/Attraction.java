@@ -1,5 +1,7 @@
 package com.example.parks.models;
 
+import java.util.Arrays;
+
 public class Attraction {
     private String phoneNumber;
 
@@ -7,10 +9,15 @@ public class Attraction {
 
     private String fullName;
 
+    private String county;
+
+    private String [] type;
+
+    private String image;
+
     private double latitude;
 
     private double longitude;
-
 
 
     public String getPhoneNumber() {
@@ -37,6 +44,29 @@ public class Attraction {
         this.fullName = fullName;
     }
 
+    public String getCounty() {
+        return county;
+    }
+
+    public void setCounty(String county) {
+        this.county = county;
+    }
+
+    public String[] getType() {
+        return type;
+    }
+
+    public void setType(String[] type) {
+        this.type = type;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
     public double getLatitude() {
         return latitude;
     }
@@ -53,14 +83,18 @@ public class Attraction {
         this.longitude = longitude;
     }
 
+
     @Override
     public String toString() {
         return "Attraction{" +
                 "phoneNumber='" + phoneNumber + '\'' +
                 ", url='" + url + '\'' +
                 ", fullName='" + fullName + '\'' +
-                ", latitude='" + latitude + '\'' +
-                ", longitude='" + longitude + '\'' +
+                ", county='" + county + '\'' +
+                ", type=" + Arrays.toString(type) +
+                ", image='" + image + '\'' +
+                ", latitude=" + latitude +
+                ", longitude=" + longitude +
                 '}';
     }
 }

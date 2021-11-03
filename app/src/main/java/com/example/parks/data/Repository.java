@@ -33,6 +33,13 @@ public class Repository {
                             JSONObject getGeo = jsonObject.getJSONObject("geo");
                             attraction.setLatitude(getGeo.getDouble("latitude"));
                             attraction.setLongitude(getGeo.getDouble("longitude"));
+                            JSONObject getAddress = jsonObject.getJSONObject("address");
+                            attraction.setCounty(getAddress.getString("addressRegion"));
+                            JSONObject getImageUrl = jsonObject.getJSONObject("image");
+                            attraction.setImage(getImageUrl.getString("url"));
+
+
+
                             attractionList.add(attraction);
 
                         }

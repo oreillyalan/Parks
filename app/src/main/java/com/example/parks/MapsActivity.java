@@ -83,7 +83,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             for (Attraction attraction : attractions){
                 LatLng attractionGeoLocation = new LatLng(attraction.getLatitude(), attraction.getLongitude());
                 mMap.addMarker(new MarkerOptions().position(attractionGeoLocation).title(attraction.getFullName()));
-                //Log.d("Attracty","onMapReady: "+ attraction.toString());
+                Log.d("Attracty","onMapReady: "+ attraction.toString());
             }
             mMap.getUiSettings().setZoomControlsEnabled(true);
 
