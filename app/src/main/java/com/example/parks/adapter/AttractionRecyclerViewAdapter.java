@@ -13,6 +13,7 @@ import com.example.parks.R;
 import com.example.parks.models.Attraction;
 import com.squareup.picasso.Picasso;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class AttractionRecyclerViewAdapter extends RecyclerView.Adapter<AttractionRecyclerViewAdapter.ViewHolder> {
@@ -36,7 +37,8 @@ public class AttractionRecyclerViewAdapter extends RecyclerView.Adapter<Attracti
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Attraction attraction = attractionList.get(position);
         holder.attractionName.setText(attraction.getFullName());
-        holder.attractionType.setText(attraction.getType().toString());
+        String stringArr = Arrays.toString(attraction.getType());
+        holder.attractionType.setText(stringArr);
         holder.attractionCounty.setText(attraction.getCounty());
         if(attraction.getImage()!=""){
             Picasso.get().load(attraction.getImage())

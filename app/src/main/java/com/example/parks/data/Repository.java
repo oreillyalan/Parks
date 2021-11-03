@@ -37,6 +37,14 @@ public class Repository {
                             attraction.setCounty(getAddress.getString("addressRegion"));
                             JSONObject getImageUrl = jsonObject.getJSONObject("image");
                             attraction.setImage(getImageUrl.getString("url"));
+                            JSONArray getTags = jsonObject.getJSONArray("tags");
+                            ArrayList<String> listdata = new ArrayList<String>();
+                            if (getTags != null) {
+                                for (int k=0;k<getTags.length();k++){
+                                    listdata.add(getTags.getString(k));
+                                }
+                            }
+                            attraction.setType(listdata.toArray(new String[0]));
 
 
 
