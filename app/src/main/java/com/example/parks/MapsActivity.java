@@ -2,8 +2,13 @@ package com.example.parks;
 
 import androidx.fragment.app.FragmentActivity;
 
+import android.nfc.Tag;
 import android.os.Bundle;
+import android.util.Log;
 
+import com.example.parks.data.AsyncResponse;
+import com.example.parks.data.Repository;
+import com.example.parks.models.Attraction;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -12,7 +17,10 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.example.parks.databinding.ActivityMapsBinding;
 
+import java.util.List;
+
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+
 
     private GoogleMap mMap;
     private ActivityMapsBinding binding;
@@ -48,5 +56,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.addMarker(new MarkerOptions().position(waterford).title("Marker in Waterford"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(waterford));
         mMap.animateCamera(CameraUpdateFactory.zoomTo(mMap.getCameraPosition().zoom + 7f));
+
+        Repository.getAttractions(attractions -> {
+            for (Attraction attraction : attractions){
+                Log.d("Attracty","onMapReady: "+ attraction.toString());
+            }
+        });
+
+
     }
 }
