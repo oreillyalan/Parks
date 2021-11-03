@@ -13,6 +13,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.example.parks.databinding.ActivityMapsBinding;
@@ -50,17 +51,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-
-        // Add a marker in Sydney and move the camera
-        LatLng waterford = new LatLng(52.25, -7.11);
-        mMap.addMarker(new MarkerOptions().position(waterford).title("Marker in Waterford"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(waterford));
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(mMap.getCameraPosition().zoom + 7f));
+        LatLng ireland = new LatLng(53.14337, -7.69193);
+        mMap.moveCamera( CameraUpdateFactory.newLatLngZoom(ireland, 6.0f) );
 
         Repository.getAttractions(attractions -> {
             for (Attraction attraction : attractions){
-                Log.d("Attracty","onMapReady: "+ attraction.toString());
+                LatLng attractionGeoLocation = new LatLng(attraction.getLatitude(), attraction.getLongitude());
+                mMap.addMarker(new MarkerOptions().position(attractionGeoLocation).title(attraction.getFullName()));
+                //Log.d("Attracty","onMapReady: "+ attraction.toString());
             }
+            mMap.getUiSettings().setZoomControlsEnabled(true);
+
         });
 
 
