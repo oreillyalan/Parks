@@ -5,7 +5,8 @@
     android:id="@+id/attraction_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
+    android:background="#E1E3E4"
+    android:padding="8dp"
     tools:context=".AttractionsFragment">
 
 
